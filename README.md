@@ -1,6 +1,6 @@
 # DeepCARS: in-hospital mortality at the AI alert threshold
 
-Stata 15 code. Data are not included.
+Stata 15 code. Data are not included; see the data sharing statement in the paper.
 
 Requires `rdrobust` and `rddensity`. Put `paper_data_v9.dta` in this folder and run `do 00_master.do`.
 
