@@ -6,7 +6,7 @@ global R "replicate_v12"
 global X "$R/tables.xlsx"
 global CUT 89.5
 cap log close
-log using "$R/tables_v2.log", replace text
+log using "$R/tables_v3.log", replace text
 cap erase "$X"
 
 program define fmt_or
@@ -111,17 +111,17 @@ program define t2panel
     gen str6 window = "±" + string(h)
     sort ord h
 end
-t2panel res_windows "Panel A. In-hospital death (primary outcome)"
+t2panel res_windows "In-hospital death (primary outcome)"
 tempfile pa
 save `pa'
-t2panel res_windows_comp_gw "Panel B. Death or ward cardiac arrest"
+t2panel res_windows_comp_gw "Death or ward cardiac arrest"
 gen byte pn = 2
 append using `pa'
 replace pn = 1 if pn >= .
 sort pn ord h
 keep panel estimator window orci pv events admissions
 order panel estimator window orci pv events admissions
-label var panel "Panel"
+label var panel "Outcome"
 label var estimator "Estimator"
 label var window "Window"
 label var orci "Odds ratio (95% CI)"
